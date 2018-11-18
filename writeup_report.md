@@ -16,7 +16,7 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/placeholder.png "Model Visualization"
+[image1]: ./writeup-images/CNN.png "Model Visualization"
 [image2]: ./examples/placeholder.png "Grayscaling"
 [image3]: ./examples/placeholder_small.png "Recovery Image"
 [image4]: ./examples/placeholder_small.png "Recovery Image"
@@ -52,7 +52,7 @@ The model.py file contains the code for training and saving the convolution neur
 
 #### 1. An appropriate model architecture has been employed
 
-My model consists of a convolution neural network with 3x3 filter sizes and depths between 32 and 128 (model.py lines 18-24) 
+My model consists of the following layers: 
 
 | Layer         		|     Output Shape	        					| Param \# |
 |:---------------------:|:------------------------------:|:---------------:| 
@@ -70,12 +70,17 @@ My model consists of a convolution neural network with 3x3 filter sizes and dept
 |Dense          |   (None, 1)               |  11        |
 
 
-Total params: 341,819
-Trainable params: 341,819
-Non-trainable params: 0
-_________________________________________________________________
-Epoch 1/1
-10556/10556 [==============================] - 4329s 410ms/step - loss: 0.0043 - val_loss: 0.0075
+Total params: 341,819  
+Trainable params: 341,819  
+Non-trainable params: 0  
+_________________________________________________________________  
+
+This model was obtained from NVidia's paper "End to End Learning for Self-Driving Cars":
+
+![alt text][image1]
+
+Epoch 1/1  
+10556/10556 [==============================] - 4329s 410ms/step - loss: 0.0043 - val_loss: 0.0075  
 
 The model includes RELU layers to introduce nonlinearity (code line 20), and the data is normalized in the model using a Keras lambda layer (code line 18). 
 
