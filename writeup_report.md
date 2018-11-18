@@ -56,18 +56,18 @@ My model consists of a convolution neural network with 3x3 filter sizes and dept
 
 | Layer         		|     Output Shape	        					| Param \# |
 |:---------------------:|:------------------------------:|:---------------:| 
-| cropping2d    (Cropping2D)   | (None, 43, 160, 3)   |     0      |
-|lambda    (Lambda)       |     (None, 43, 160, 3)    |    0       |
-|conv2d    (Conv2D)        |   (None, 22, 80, 24)      |  1824      |
-|conv2d    (Conv2D)        |   (None, 11, 40, 36)      |  21636     |
-|conv2d    (Conv2D)        |   (None, 6, 20, 48)       |  43248     |
-|conv2d    (Conv2D)        |   (None, 4, 18, 64)       |  27712     |
-|conv2d    (Conv2D)        |   (None, 2, 16, 64)       |  36928     |
-|flatten    (Flatten)      |   (None, 2048)            |  0         |
-|dense    (Dense)          |   (None, 100)             |  204900    |
-|dense    (Dense)          |   (None, 50)              |  5050      |
-|dense    (Dense)          |   (None, 10)              |  510       |
-|dense    (Dense)          |   (None, 1)               |  11        |
+|Cropping2D     |   (None, 43, 160, 3)      |    0       |
+|Lambda         |   (None, 43, 160, 3)      |    0       |
+|Conv2D         |   (None, 22, 80, 24)      |  1824      |
+|Conv2D         |   (None, 11, 40, 36)      |  21636     |
+|Conv2D         |   (None, 6, 20, 48)       |  43248     |
+|Conv2D         |   (None, 4, 18, 64)       |  27712     |
+|Conv2D         |   (None, 2, 16, 64)       |  36928     |
+|Flatten        |   (None, 2048)            |  0         |
+|Dense          |   (None, 100)             |  204900    |
+|Dense          |   (None, 50)              |  5050      |
+|Dense          |   (None, 10)              |  510       |
+|Dense          |   (None, 1)               |  11        |
 
 
 Total params: 341,819
