@@ -56,8 +56,6 @@ My model consists of the following layers:
 
 | Layer         		|     Output Shape	        					| Param \# |
 |:---------------------:|:------------------------------:|:---------------:| 
-|Cropping2D     |   (None, 43, 160, 3)      |    0       |
-|Lambda         |   (None, 43, 160, 3)      |    0       |
 |Conv2D         |   (None, 22, 80, 24)      |  1824      |
 |Conv2D         |   (None, 11, 40, 36)      |  21636     |
 |Conv2D         |   (None, 6, 20, 48)       |  43248     |
@@ -77,21 +75,19 @@ _________________________________________________________________
 
 This model was obtained from NVidia's paper "End to End Learning for Self-Driving Cars":
 
-![alt text][image1]
+The model includes RELU activation after each convolution to introduce nonlinearity (code line 80-89), the data is cropped and normalized in the model using Keras cropping and lambda layers (code lines 77-78). 
+
+#### 2. Attempts to reduce overfitting in the model
+
+Considering that the model achieved a good result using only 1 epoch of training; that it was trained and validated on different data sets; and the results obtained met the minimum criteria, no layer to reduce overfitting was necessary.
 
 Epoch 1/1  
 10556/10556 [==============================] - 4329s 410ms/step - loss: 0.0043 - val_loss: 0.0075  
 
-The model includes RELU layers to introduce nonlinearity (code line 20), and the data is normalized in the model using a Keras lambda layer (code line 18). 
-
-#### 2. Attempts to reduce overfitting in the model
-
-The model contains dropout layers in order to reduce overfitting (model.py lines 21). 
-
-The model was trained and validated on different data sets to ensure that the model was not overfitting (code line 10-16). The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
+The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
 #### 3. Model parameter tuning\
-The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 25).
+The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 99).
 
 #### 4. Appropriate training data
 
