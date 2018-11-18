@@ -6,6 +6,7 @@ import cv2
 from sklearn.utils import shuffle 
 from sklearn.model_selection import train_test_split
 
+#Read driving_log.csv and extract its lines
 lines = []
 with open('data/driving_log.csv') as csvfile:
     reader = csv.reader(csvfile)
@@ -13,8 +14,10 @@ with open('data/driving_log.csv') as csvfile:
     for line in reader:
         lines.append(line)
         
+#Split 80% for the data to training and 20% to validation
 train_samples, validation_samples = train_test_split(lines, test_size=0.2, random_state=42)
 
+#Define a generator to reduce memory consumption
 def generator(samples, batch_size = 32, correction = 0.2):
     num_samples = len(samples)
     while 1:
@@ -25,6 +28,9 @@ def generator(samples, batch_size = 32, correction = 0.2):
             images = []
             angles = []
             for batch_sample in batch_samples:
+            	#Each sample from the batch passes through a pipeline that consists of:
+            	#Grayscaling and Image resizing (to reduce the resolution to half of the original)
+            	#A correction is added or subtracted from Left and Right images
                 #Center image
                 name = batch_sample[0].split('/')[-1]
                 current_path = 'data/IMG/' + name
@@ -65,9 +71,12 @@ validation_generator = generator(validation_samples, batch_size=32, correction=0
 from keras.models import Sequential
 from keras.layers import Dense, Flatten, Lambda, Reshape, Cropping2D, Conv2D
 
+#Model definition
 model = Sequential()
+#Data preprocessing = Cropping and Normalization
 model.add(Cropping2D(cropping=((25, 12), (0, 0)), input_shape=(80, 160, 3)))
 model.add(Lambda(lambda x: x / 255.0 - 0.5))
+#Model layers
 model.add(Conv2D(filters=24, kernel_size=5, strides=(2, 2), 
                  padding='same', activation='relu'))
 model.add(Conv2D(filters=36, kernel_size=5, strides=(2, 2),
@@ -86,6 +95,7 @@ model.add(Dense(1))
 
 model.summary()
 
+#Model training
 model.compile(loss='mse', optimizer='adam')
 model.fit_generator(train_generator, steps_per_epoch=len(train_samples),
                     validation_data=validation_generator,
