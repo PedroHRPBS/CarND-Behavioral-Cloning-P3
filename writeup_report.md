@@ -20,6 +20,10 @@ The goals / steps of this project are the following:
 [image2]: ./writeup-images/center.jpg "Center Image"
 [image3]: ./writeup-images/left.jpg "Left Image"
 [image4]: ./writeup-images/right.jpg "Right Image"
+[image5]: ./writeup-images/center_gray.jpg "Gray Image"
+[image6]: ./writeup-images/center_res.jpg "LowRes Image"
+[image7]: ./writeup-images/center_crop.jpg "Crop Image"
+
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
@@ -129,15 +133,25 @@ To capture good driving behavior, I first recorded two laps on track one using c
 
 ![alt text][image2]
 
-To augment the dataset and enabling the vehicle to recover to the center of the lane, I used the left and right camera images adding a correction on the steering angle of 0.2. Doing so I tripled the number of samples.  
+To augment the dataset and enable the vehicle to recover to the center of the lane, I used the left and right camera images adding a correction on the steering angle of 0.2. Doing so I tripled the number of samples.  
 Here are some examples of left and right camera images:
 
 ![alt text][image3]
 ![alt text][image4]
 
-After the collection process, I had almost 40k data points. I then preprocessed this data by ...
+After the collection process, I had almost 40k data points. I then preprocessed this data by first changing to grayscale (model.py line 38, 48, 58):
 
+![alt text][image5]
 
-I finally randomly shuffled the data set and put Y% of the data into a validation set. 
+Then I resized the image to have half of its original resolution (according to "Behavioral Cloning Cheatsheet" this was a good step to perform to reduce processing time) (model.py lines 39, 49 ,59):
 
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was Z as evidenced by ... I used an adam optimizer so that manually training the learning rate wasn't necessary.
+![alt text][image6]
+
+Inside the model I performed cropping and normalization of data (model.py lines 77-78):
+
+![alt text][image7]
+
+I finally randomly shuffled the data set and put 20% of the data into a validation set. (model.py line 18)
+
+I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 1 as evidenced by the vehicle completing the track after the fist epoch and overfitting after the second.  
+I used an adam optimizer so that manually training the learning rate wasn't necessary.
