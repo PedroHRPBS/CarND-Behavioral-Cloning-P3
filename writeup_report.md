@@ -54,6 +54,29 @@ The model.py file contains the code for training and saving the convolution neur
 
 My model consists of a convolution neural network with 3x3 filter sizes and depths between 32 and 128 (model.py lines 18-24) 
 
+| Layer         		|     Output Shape	        					| Param \# |
+|:---------------------:|:------------------------------:|:---------------:| 
+| cropping2d    (Cropping2D)   | (None, 43, 160, 3)   |     0      |
+|lambda    (Lambda)       |     (None, 43, 160, 3)    |    0       |
+|conv2d    (Conv2D)        |   (None, 22, 80, 24)      |  1824      |
+|conv2d    (Conv2D)        |   (None, 11, 40, 36)      |  21636     |
+|conv2d    (Conv2D)        |   (None, 6, 20, 48)       |  43248     |
+|conv2d    (Conv2D)        |   (None, 4, 18, 64)       |  27712     |
+|conv2d    (Conv2D)        |   (None, 2, 16, 64)       |  36928     |
+|flatten    (Flatten)      |   (None, 2048)            |  0         |
+|dense    (Dense)          |   (None, 100)             |  204900    |
+|dense    (Dense)          |   (None, 50)              |  5050      |
+|dense    (Dense)          |   (None, 10)              |  510       |
+|dense    (Dense)          |   (None, 1)               |  11        |
+
+
+Total params: 341,819
+Trainable params: 341,819
+Non-trainable params: 0
+_________________________________________________________________
+Epoch 1/1
+10556/10556 [==============================] - 4329s 410ms/step - loss: 0.0043 - val_loss: 0.0075
+
 The model includes RELU layers to introduce nonlinearity (code line 20), and the data is normalized in the model using a Keras lambda layer (code line 18). 
 
 #### 2. Attempts to reduce overfitting in the model
@@ -62,8 +85,7 @@ The model contains dropout layers in order to reduce overfitting (model.py lines
 
 The model was trained and validated on different data sets to ensure that the model was not overfitting (code line 10-16). The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
-#### 3. Model parameter tuning
-
+#### 3. Model parameter tuning\
 The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 25).
 
 #### 4. Appropriate training data
