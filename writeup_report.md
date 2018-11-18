@@ -143,7 +143,7 @@ After the collection process, I had almost 40k data points. I then preprocessed 
 
 ![alt text][image5]
 
-Then I resized the image to have half of its original resolution (according to "Behavioral Cloning Cheatsheet" this was a good step to perform to reduce processing time) (model.py lines 39, 49 ,59):
+Then I resized the image to have half of its original resolution (according to "Behavioral Cloning Cheatsheet" this was a good step to perform to reduce processing time) (model.py lines 39, 49 ,59). This step aldo made me have to change drive.py to resize the images that were to be predicted (drive.py line 65):
 
 ![alt text][image6]
 
