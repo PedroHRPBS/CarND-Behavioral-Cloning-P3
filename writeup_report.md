@@ -133,7 +133,7 @@ To capture good driving behavior, I first recorded two laps on track one using c
 
 ![alt text][image2]
 
-To augment the dataset and enable the vehicle to recover to the center of the lane, I used the left and right camera images adding a correction on the steering angle of 0.2. Doing so I tripled the number of samples.  
+To augment the dataset and enable the vehicle to recover to the center of the lane, I used the left and right camera images adding a correction on the steering angle of 0.2 (model.py lines 50, 60). Doing so I tripled the number of samples.  
 Here are some examples of left and right camera images:
 
 ![alt text][image3]
@@ -143,7 +143,7 @@ After the collection process, I had almost 40k data points. I then preprocessed 
 
 ![alt text][image5]
 
-Then I resized the image to have half of its original resolution (according to "Behavioral Cloning Cheatsheet" this was a good step to perform to reduce processing time) (model.py lines 39, 49 ,59). This step aldo made me have to change drive.py to resize the images that were to be predicted (drive.py line 65):
+Then I resized the image to have half of its original resolution (according to "Behavioral Cloning Cheatsheet" this was a good step to perform to reduce processing time) (model.py lines 39, 49 ,59). This step also made me change drive.py to resize the images that were to be predicted (drive.py line 65):
 
 ![alt text][image6]
 
@@ -151,7 +151,7 @@ Inside the model I performed cropping and normalization of data (model.py lines 
 
 ![alt text][image7]
 
-I finally randomly shuffled the data set and put 20% of the data into a validation set. (model.py line 18)
+I finally randomly shuffled the data set (model.py lines 24, 66) and put 20% of the data into a validation set. (model.py line 18)
 
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 1 as evidenced by the vehicle completing the track after the fist epoch and overfitting after the second.  
+I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 1 as evidenced by the vehicle completing the track after the first epoch and overfitting after the second.  
 I used an adam optimizer so that manually training the learning rate wasn't necessary.
