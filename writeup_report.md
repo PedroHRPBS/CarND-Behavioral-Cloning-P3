@@ -106,7 +106,9 @@ So I kept the first model solution.
 The final model architecture (model.py lines 75-94) consisted of a convolution neural network with the following layers and layer sizes:
 
 | Layer         		|     Output Shape	        					| Param \# |
-|:---------------------:|:------------------------------:|:---------------:| 
+|:---------------------:|:------------------------------:|:---------------:|
+|Cropping2D     |   (None, 43, 160, 3)      |  0         |
+|Lambda         |   (None, 43, 160, 3)      |  0         |
 |Conv2D         |   (None, 22, 80, 24)      |  1824      |
 |Conv2D         |   (None, 11, 40, 36)      |  21636     |
 |Conv2D         |   (None, 6, 20, 48)       |  43248     |
