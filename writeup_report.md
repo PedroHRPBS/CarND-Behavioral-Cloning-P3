@@ -96,7 +96,7 @@ The final step was to run the simulator to see how well the car was driving arou
 
 So, with an already working model, I tried to train it for one more epoch, to see if the behavior was improved, but the model overfitted. 
 
-Epoch 1/1
+Epoch 1/1  
 10556/10556 [==============================] - 4254s 403ms/step - loss: 6.2039e-04 - val_loss: 0.0071
 
 So I kept the first model solution.
@@ -128,26 +128,17 @@ _________________________________________________________________
 
 #### 3. Creation of the Training Set & Training Process
 
-To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
+To capture good driving behavior, I first recorded two laps on track one using center lane driving plus one lap driving the track backwards. Then I added Udacity's dataset to my own and I got almost 14k samples. Here is an example image of center lane driving:
 
 ![alt text][image2]
 
-I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to .... These images show what a recovery looks like starting from ... :
+To augment the dataset and enabling the vehicle to recover to the center of the lane, I used the left and right camera images adding a correction on the steering angle of 0.2. Doing so I tripled the number of samples.  
+Here are some examples of left and right camera images:
 
 ![alt text][image3]
 ![alt text][image4]
-![alt text][image5]
 
-Then I repeated this process on track two in order to get more data points.
-
-To augment the data sat, I also flipped images and angles thinking that this would ... For example, here is an image that has then been flipped:
-
-![alt text][image6]
-![alt text][image7]
-
-Etc ....
-
-After the collection process, I had X number of data points. I then preprocessed this data by ...
+After the collection process, I had almost 40k data points. I then preprocessed this data by ...
 
 
 I finally randomly shuffled the data set and put Y% of the data into a validation set. 
