@@ -22,9 +22,6 @@ The goals / steps of this project are the following:
 
 
 ---
-### Files Submitted & Code Quality
-
-#### 1. Submission includes all required files and can be used to run the simulator in autonomous mode
 
 My project includes the following files:
 * model.py containing the script to create and train the model
@@ -32,13 +29,7 @@ My project includes the following files:
 * model.h5 containing a trained convolution neural network 
 * writeup_report.md summarizing the results
 
-#### 2. Submission includes functional code
-Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing 
-```sh
-python drive.py model.h5
-```
-
-#### 3. Submission code is usable and readable
+For results, you can see video.mp4, that shows the car driving itself on the track.
 
 The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
 
@@ -62,7 +53,7 @@ Epoch 1/1
 
 The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
-#### 3. Model parameter tuning\
+#### 3. Model parameter tuning
 The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 99).
 
 #### 4. Appropriate training data
